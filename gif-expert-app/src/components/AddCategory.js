@@ -14,7 +14,7 @@ const AddCategory = ({setCategories}) => {
 
         if( inputValue.trim().length >= 1){
             setCategories( category => [inputValue, ...category]);
-            setInputValue('LoL');
+            setInputValue('');
         }
     }
     
