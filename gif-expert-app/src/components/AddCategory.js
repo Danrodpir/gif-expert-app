@@ -14,7 +14,7 @@ const AddCategory = ({setCategories}) => {
 
         if( inputValue.trim().length >= 1){
             setCategories( category => [inputValue, ...category]);
-            setInputValue('');
+            setInputValue('LoL');
         }
     }
     
@@ -23,6 +23,7 @@ const AddCategory = ({setCategories}) => {
                 <input 
                     type= "text"         
                     value={inputValue}  
+                    placeholder="Busca tus gifs aquí"
                     onChange={handleInputChange}     
                 />   
             </form>      

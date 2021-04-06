@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { getGifs } from '../helpers/getGif';
 import { GifGridItem } from './GifGridItem';
 
 export const GifGrid = ({category}) => {
@@ -6,27 +7,11 @@ export const GifGrid = ({category}) => {
     const [images, setImages] = useState([]);
 
     useEffect( () => {
-        getGifs();
-    }, [])
+        getGifs(category)
+            .then(setImages);
+    }, [category])
 
-    const getGifs = async() => {
-
-        const url = `https://api.giphy.com/v1/gifs/search?api_key=4uqNmT4YX41RoAU4QKRKUcruCIg9Majt&q=${encodeURI(category)}}&limit=10`
-        const resp = await fetch(url);
-        const {data} = await resp.json();
-
-        const gifs = data.map (img => {
-            return{
-                id: img.id,
-                title: img.title,
-                url: img.images?.downsized_medium.url
-            }
-
-        })
-
-        console.log(gifs);
-        setImages(gifs)
-    }
+    
 
     //getGifs()
 
