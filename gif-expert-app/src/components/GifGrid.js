@@ -11,7 +11,7 @@ export const GifGrid = ({category}) => {
 
     const getGifs = async() => {
 
-        const url = 'https://api.giphy.com/v1/gifs/search?api_key=4uqNmT4YX41RoAU4QKRKUcruCIg9Majt&q=Marvel&limit=5'
+        const url = `https://api.giphy.com/v1/gifs/search?api_key=4uqNmT4YX41RoAU4QKRKUcruCIg9Majt&q=${encodeURI(category)}}&limit=10`
         const resp = await fetch(url);
         const {data} = await resp.json();
 
